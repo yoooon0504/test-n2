@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>행운의 로또 번호 추천</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href='/style.css' rel='stylesheet'>
+  <link href='style.css' rel='stylesheet'>
 </head>
 <body>
   <div class="app-container">
@@ -36,12 +36,28 @@
           <li class="empty-msg">아직 생성된 번호가 없습니다.</li>
         </ul>
       </div>
+
+      <div class="contact-section">
+        <h3><i class="fas fa-handshake"></i> 제휴 문의</h3>
+        <form action="https://formspree.io/f/mpqywlqr" method="POST" class="contact-form">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="성함 또는 업체명" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="이메일 주소" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="문의 내용을 입력해주세요" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">문의하기</button>
+        </form>
+      </div>
     </main>
 
     <footer>
       <p>&copy; 2026 Lucky Lotto. Good Luck!</p>
     </footer>
   </div>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <script defer type="text/javascript" src="main.js"></script>
 </body>
 </html>
