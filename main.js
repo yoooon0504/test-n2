@@ -2,9 +2,34 @@ const generateBtn = document.getElementById('generate-btn');
 const numbersWrapper = document.getElementById('lotto-numbers');
 const historyList = document.getElementById('history-list');
 const btnIcon = generateBtn.querySelector('i');
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
 
 let isGenerating = false;
 
+// Theme Logic
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+  if (theme === 'dark') {
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+  } else {
+    themeIcon.classList.replace('fa-sun', 'fa-moon');
+  }
+}
+
+// Lotto Logic
 generateBtn.addEventListener('click', async () => {
   if (isGenerating) return;
   
@@ -14,16 +39,12 @@ generateBtn.addEventListener('click', async () => {
 
   const lottoNumbers = generateLottoNumbers();
   
-  // Clear display
   numbersWrapper.innerHTML = '';
   
-  // Display numbers one by one with animation
   for (let i = 0; i < lottoNumbers.length; i++) {
     const ball = createBall(lottoNumbers[i]);
     numbersWrapper.appendChild(ball);
-    
-    // Small delay for animation feel
-    await new Promise(resolve => setTimeout(resolve, 200));
+    await new Promise(resolve => setTimeout(resolve, 150));
     ball.classList.add('show');
   }
 
@@ -60,7 +81,6 @@ function createBall(num) {
 }
 
 function addHistory(numbers) {
-  // Remove empty message if exists
   const emptyMsg = historyList.querySelector('.empty-msg');
   if (emptyMsg) emptyMsg.remove();
 
@@ -74,10 +94,8 @@ function addHistory(numbers) {
     <span class="history-time">${timeStr}</span>
   `;
 
-  // Insert at the top
   historyList.insertBefore(li, historyList.firstChild);
 
-  // Keep only last 10
   if (historyList.children.length > 10) {
     historyList.removeChild(historyList.lastChild);
   }
