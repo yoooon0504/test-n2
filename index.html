@@ -1,14 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>행운의 로또 번호 추천</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
+  <div class="app-container">
+    <header>
+      <h1><i class="fas fa-clover"></i> 행운의 로또 번호</h1>
+      <p>오늘의 운세를 믿어보세요!</p>
+    </header>
+
+    <main>
+      <div class="display-section">
+        <div id="lotto-numbers" class="numbers-wrapper">
+          <div class="placeholder-text">행운을 불러오는 중...</div>
+        </div>
+        <button id="generate-btn" class="main-btn">
+          <span class="btn-icon"><i class="fas fa-sync-alt"></i></span>
+          <span class="btn-text">번호 생성하기</span>
+        </button>
+      </div>
+
+      <div class="history-section">
+        <h3><i class="fas fa-history"></i> 최근 생성 번호</h3>
+        <ul id="history-list">
+          <li class="empty-msg">아직 생성된 번호가 없습니다.</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Lucky Lotto. Good Luck!</p>
+    </footer>
+  </div>
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>
